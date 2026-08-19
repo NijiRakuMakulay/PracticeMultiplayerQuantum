@@ -1,0 +1,5 @@
+singleton component GameSession
+{
+	[ExcludeFromPrototype] GameState State;
+	[ExcludeFromPrototype] FP TimeUntilStart;
+}

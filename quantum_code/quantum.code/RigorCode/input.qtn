@@ -1,0 +1,9 @@
+input
+{
+	short DirectionX;
+	short DirectionY;
+	FPVector2 MoveDir;
+	FP Jump;
+	FPVector3 AimDir;
+	FP FireTrigger;
+}

@@ -1,0 +1,1 @@
+﻿// NativeSemaphore.c has been removed

@@ -1,0 +1,8 @@
+component PlayerConfig
+{
+	FP HP;
+	FP speed;
+	bool isAlive;
+	FP ShotInterval;
+	Transform3D BulletSpawner;
+}
