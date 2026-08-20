@@ -44,7 +44,7 @@ namespace Quantum
                     input.MoveDir = new FPVector2((FP)input.DirectionX * filter.Config->speed / 10, (FP)input.DirectionY * filter.Config->speed / 10);
                     if (input.MoveDir.SqrMagnitude > 1) { input.MoveDir = input.MoveDir.Normalized; }
                     if (input.MoveDir.SqrMagnitude != default) { filter.Transform->Rotation = FPQuaternion.Lerp(filter.Transform->Rotation, FPQuaternion.LookRotation(input.MoveDir.XOY), f.DeltaTime * 10); }
-                    if (filter.Transform->Position.Y < -10) { filter.Transform->Position = GetSpawnPosition(filter.Link->Player, f.PlayerCount); filter.Config->HP -= 10; }
+                    if (filter.Transform->Position.Y < -50) { filter.Transform->Position = GetSpawnPosition(filter.Link->Player, f.PlayerCount); filter.Config->HP -= 10; }
                     if (input.Jump > 0)
                     {
                         filter.CharacterController->Jump(f);
@@ -80,7 +80,7 @@ namespace Quantum
             var bProto = f.FindAsset<EntityPrototype>("Resources/DB/Bullet|EntityPrototype");
             EntityRef bullet = f.Create(bProto);
             Transform3D* bulletTransform = f.Unsafe.GetPointer<Transform3D>(bullet);
-            bulletTransform->Position = new FPVector3(filter.Transform->Position.X, filter.Transform->Position.Y + (short)2.0, filter.Transform->Position.Z + (short)1.0) + filter.Transform->Forward * 1;
+            bulletTransform->Position = new FPVector3(filter.Transform->Position.X, filter.Transform->Position.Y + (short)2.0, filter.Transform->Position.Z) + filter.Transform->Forward * 2;
             bulletTransform->Rotation = filter.Transform->Rotation;
         }
 
