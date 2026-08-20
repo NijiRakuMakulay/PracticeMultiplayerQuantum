@@ -4,5 +4,5 @@ component PlayerConfig
 	FP speed;
 	bool isAlive;
 	FP ShotInterval;
-	Transform3D BulletSpawner;
+	FP TimeToShoot;
 }

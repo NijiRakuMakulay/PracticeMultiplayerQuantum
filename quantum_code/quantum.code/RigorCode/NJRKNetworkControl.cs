@@ -9,9 +9,8 @@ using System.Diagnostics;
 
 namespace Quantum
 {
-    public unsafe class NJRKNetworkControl : SystemMainThreadFilter<NJRKNetworkControl.Filter>, ISignalOnPlayerDataSet, ISignalOnPlayerDisconnected
+    public unsafe class NJRKNetworkControl : SystemMainThreadFilter<NJRKNetworkControl.Filter>, ISignalOnPlayerDataSet, ISignalOnPlayerDisconnected, ISignalOnCollisionEnter3D
     {
-        FP setShotThreshold;
         FP maxHP;
         public struct Filter
         {
@@ -20,12 +19,12 @@ namespace Quantum
             public Transform3D* Transform;
             public playerlink* Link;
             public PlayerConfig* Config;
+            public ObjectType* ObjType;
         }
 
         void OnInit(ref Filter filter)
         {
             maxHP = 100;
-            setShotThreshold = filter.Config->ShotInterval;
         }
 
         public override void Update(Frame f, ref Filter filter)
@@ -52,19 +51,19 @@ namespace Quantum
                     }
                     if (input.FireTrigger > 0)
                     {
-                        if (setShotThreshold <= 0)
+                        if (filter.Config->ShotInterval <= 0)
                         {
-                            setShotThreshold = filter.Config->ShotInterval;
+                            filter.Config->ShotInterval = filter.Config->TimeToShoot;
                             FireBullet(f, filter);
                         }
                         else
                         {
-                            setShotThreshold -= f.DeltaTime;
+                            filter.Config->ShotInterval -= f.DeltaTime;
                         }
                     }
                     else
                     {
-                        setShotThreshold = 0;
+                        filter.Config->ShotInterval = 0;
                     }
                     filter.CharacterController->Move(f, filter.Entity, input.MoveDir.XOY);
                 }
@@ -81,8 +80,8 @@ namespace Quantum
             var bProto = f.FindAsset<EntityPrototype>("Resources/DB/Bullet|EntityPrototype");
             EntityRef bullet = f.Create(bProto);
             Transform3D* bulletTransform = f.Unsafe.GetPointer<Transform3D>(bullet);
-            filter.Config->BulletSpawner.Position = new FPVector3(filter.Transform->Position.X, filter.Transform->Position.Y + (short)2.0, filter.Transform->Position.Z + (short)1.0);
-            bulletTransform->Position = filter.Config->BulletSpawner.Position + filter.Config->BulletSpawner.Forward * 1;
+            bulletTransform->Position = new FPVector3(filter.Transform->Position.X, filter.Transform->Position.Y + (short)2.0, filter.Transform->Position.Z + (short)1.0) + filter.Transform->Forward * 1;
+            bulletTransform->Rotation = filter.Transform->Rotation;
         }
 
         public void OnPlayerDataSet(Frame frame, PlayerRef player)
@@ -111,6 +110,22 @@ namespace Quantum
             {
                 if(playerLink.Component.Player != Player) { continue; }
                 f.Destroy(playerLink.Entity);
+            }
+        }
+
+        public void OnCollisionEnter3D(Frame f, CollisionInfo3D collider)
+        {
+            if (!f.Has<ObjectType>(collider.Other)) { return; }
+            else
+            {
+                Obj Target = f.Get<ObjectType>(collider.Other).Object;
+                if (Target == Obj.Bullet)
+                {
+                    if (f.Unsafe.TryGetPointer<PlayerConfig>(collider.Entity, out var cfg))
+                    {
+                        cfg->HP -= 1;
+                    }
+                }
             }
         }
     }

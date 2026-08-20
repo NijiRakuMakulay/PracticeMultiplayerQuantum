@@ -1,0 +1,5 @@
+enum Obj { Player, Bullet, Obstacle }
+component ObjectType
+{
+	Obj Object;
+}

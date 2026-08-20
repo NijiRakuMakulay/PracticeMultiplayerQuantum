@@ -97,6 +97,7 @@
     <None Include="RigorCode\GameSession.qtn" />
     <None Include="RigorCode\GameState.qtn" />
     <None Include="RigorCode\input.qtn" />
+    <None Include="RigorCode\ObjectType.qtn" />
     <None Include="RigorCode\PlayerConfig.qtn" />
     <None Include="RigorCode\playerlink.qtn" />
   </ItemGroup>
