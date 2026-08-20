@@ -9265,6 +9265,19 @@ MonoBehaviour:
     CharacterPrototype:
       Id:
         Value: 1491975358604638766
+    SpawnPoints:
+    - Id:
+        Value: 2841303948224784311
+    - Id:
+        Value: 3408441192240795165
+    - Id:
+        Value: 228800408656384112
+    - Id:
+        Value: 1969271492601307361
+    - Id:
+        Value: 3615456741612704151
+    - Id:
+        Value: 3259165313323814953
 --- !u!4 &1565167105
 Transform:
   m_ObjectHideFlags: 0

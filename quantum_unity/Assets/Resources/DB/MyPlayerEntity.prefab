@@ -680,7 +680,7 @@ MonoBehaviour:
     HP:
       RawValue: 6553600
     speed:
-      RawValue: 655360
+      RawValue: 3276800
     isAlive:
       Value: 1
     ShotInterval:

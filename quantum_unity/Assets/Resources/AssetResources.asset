@@ -41,6 +41,11 @@ MonoBehaviour:
         Id:
           Value: 5
       ResourcePath: DB/Configs/SimulationConfig
+    - Path: Resources/DB/SpawnPointC|EntityPrototype
+      AssetRef:
+        Id:
+          Value: 228800408656384112
+      ResourcePath: DB/SpawnPointC
     - Path: Resources/DB/MyPlayerEntity|EntityPrototype
       AssetRef:
         Id:
@@ -51,6 +56,11 @@ MonoBehaviour:
         Id:
           Value: 1710471675203725834
       ResourcePath: DB/Map1
+    - Path: Resources/DB/SpawnPointD|EntityPrototype
+      AssetRef:
+        Id:
+          Value: 1969271492601307361
+      ResourcePath: DB/SpawnPointD
     - Path: Resources/DB/Bullet|EntityPrototype
       AssetRef:
         Id:
@@ -71,11 +81,31 @@ MonoBehaviour:
         Id:
           Value: 2569646695128262363
       ResourcePath: DB/MyPlayerEntity
+    - Path: Resources/DB/SpawnPointA|EntityPrototype
+      AssetRef:
+        Id:
+          Value: 2841303948224784311
+      ResourcePath: DB/SpawnPointA
     - Path: Resources/DB/OnlineGameManager|EntityView
       AssetRef:
         Id:
           Value: 3110992066495610065
       ResourcePath: DB/OnlineGameManager
+    - Path: Resources/DB/SpawnPointF|EntityPrototype
+      AssetRef:
+        Id:
+          Value: 3259165313323814953
+      ResourcePath: DB/SpawnPointF
+    - Path: Resources/DB/SpawnPointB|EntityPrototype
+      AssetRef:
+        Id:
+          Value: 3408441192240795165
+      ResourcePath: DB/SpawnPointB
+    - Path: Resources/DB/SpawnPointE|EntityPrototype
+      AssetRef:
+        Id:
+          Value: 3615456741612704151
+      ResourcePath: DB/SpawnPointE
     - Path: Resources/DB/Map1_mesh
       AssetRef:
         Id:

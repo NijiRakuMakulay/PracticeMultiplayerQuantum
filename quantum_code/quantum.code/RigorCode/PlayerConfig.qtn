@@ -1,7 +1,6 @@
 component PlayerConfig
 {
 	FP HP;
-	FP speed;
 	bool isAlive;
 	FP ShotInterval;
 	FP TimeToShoot;

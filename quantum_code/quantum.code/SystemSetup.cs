@@ -24,7 +24,7 @@ namespace Quantum {
         // user systems go here 
         new NJRKNetworkControl(),
         new GameSessionStateSystem(),
-        new ProjectileControl(),
+        new ProjectileControl()
       };
     }
   }
